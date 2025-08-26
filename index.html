@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF‑8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+  <title>Generador de QR con estilo</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .form-group { margin-bottom: 10px; }
+    label { display: block; margin-bottom: 4px; }
+    input[type="text"], input[type="color"], input[type="number"] {
+      width: 100%; padding: 6px;
+    }
+    #qr-container { margin-top: 20px; }
+    canvas { border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <div id="container"><img src="images.png" width="366" height="138" alt=""/>
+	  <h2><center>BIENVENIDOS AL NUEVO SISTEMA DE RECOJO</center></h2>
+	  <p>Con el fin de brindarles una mejor atención y rapidez en las entrgas de nuestras canastas, ponenmos a disposicion, el nuevo sistema de generación de QR, donde usted podra recoger su canasta únicamente presentando su QR generado. </p>
+    <h1>Generador de QR </h1>
+  <div class="form-group">
+    <label for="text">Introduzac apellidos y nombres</label>
+    <input id="text" type="text" placeholder="Perez Roca Juan" />
+  </div>
+  
+  
+  
+<button id="generate">Generar QR</button>
+  <div id="qr-container">
+    <canvas id="qr"></canvas>
+  </div>
+
+    <script>
+    const qr = new QRious({ element: document.getElementById('qr') });
+    document.getElementById('generate').addEventListener('click', () => {
+      const text = document.getElementById('text').value.trim();
+      if (!text) return alert('Ingresa un texto o URL');
+      qr.set({
+        value: text,
+        
+        level: 'H'
+      });
+    });
+  </script>
+</div>
+</body>
+</html>
